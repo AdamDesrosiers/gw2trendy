@@ -4,7 +4,7 @@
   <% ## Random Transmutes get a special treatment: A list of (before tax) net 
      ##    profits for possible outcomes. For recipes with a greater spread
      ##    of results than 10, an interval-5 summary is printed. %>
-  <table>
+  <table style="margin-left:auto;margin-right:auto;">
   <% for i in recipe.bulk[:min_qty]..recipe.bulk[:max_qty] do %>
    <% next if (recipe.bulk[:max_qty] - recipe.bulk[:min_qty] > 10) && !(i % 5 == 0) %>
    <tr>

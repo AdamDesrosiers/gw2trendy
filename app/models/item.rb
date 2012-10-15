@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   alias_attribute :sellprice, :min_sale_unit_price
   alias_attribute :buylist, :offer_availability
   alias_attribute :selllist, :sale_availability
-  attr_accessible :offer_availability, :sale_availability
+  attr_accessible :name, :max_offer_unit_price, :min_sale_unit_price, :offer_availability, :sale_availability
   ## TODO: Refactor existing functionality into methods contained here.
  
   ## Simple name-based search. 

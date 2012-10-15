@@ -1,5 +1,5 @@
 <% ## Partial for rendering individual material data. %>
-  <% $mats.each do |mat| %>
+  <% @mats.each do |mat| %>
    <tr>
     <% ## Material icon, link to display Highchart %>
     <td><%= image_tag(mat.img) %>&nbsp;<%= link_to mat.name, :action => :item, :item => mat.data_id, :remote => true %>
