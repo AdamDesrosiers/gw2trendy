@@ -1,0 +1,29 @@
+<% ## First half of the recipe display. This half contains the recipe name,
+   ##    and the table of components. %>
+
+ <% ## Result item image & recipe colloquial, then link to display graph. %>
+ <td><%= image_tag(recipe.resultItem.img, :size => "32x32") %> <%= link_to recipe.name, :action => :item, :recipe => recipe.data_id, :remote => true %> </td>
+ <td>
+  <table width="100%" cellpadding="3">
+   <thead>
+    <tr>
+     <% ## Sub-headers for the Components table %>
+     <th />
+     <th>Unit</th>
+     <th>Total</th>
+   </tr>
+   </thead> 
+   <tbody>
+   <% recipe.items.each do |item| %>
+   <tr>
+    <% ## Component icon, number & name, individual price and total price. %>
+    <td style="text-align:left;"> <%= image_tag(item.img, :size => "32x32") %> <%= item.count %>x <%= item.name %> </td>
+    <% ## coin is a helper function that turns an integer into a set of 
+       ##    HTML tags resembling the Guild Wars 2 in-game currency display. %>
+    <td style="text-align:right;"> <%= raw coin item.buyprice %> </td>
+    <td style="text-align:right;"> <%= raw coin item.buyprice*item.count %> </td>
+   </tr>
+   <% end %>
+  </table>
+ </td>
+ 

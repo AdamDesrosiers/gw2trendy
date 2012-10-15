@@ -1,0 +1,34 @@
+<h1>Mystic Forge Recipes</h1>
+
+<p> Search is NYI, don't click on column headers yet<br />
+I will advise once my test pages have been merged onto this page.</p>
+<%= render :partial => 'shared/search', :locals => { :path => mats_path } %>
+
+<h3>Random Transmutes</h3>
+<table width="80%" border="1", style="padding:2;margin-left:auto;margin-right:auto;text-align:center;">
+  <%= render "varhead" %>
+  <tbody>
+  <% @recipe.each do |recipe| %>
+   <% if recipe.isRandom == true %>
+    <%= render :partial => "shared/recipe", :locals => { :recipe => recipe } %>
+    <%= render :partial => "varprofit", :locals => { :recipe => recipe } %>
+   </tr>
+  <% end %>
+  <% end %>
+ </tbody>
+</table>
+
+<h3>Static Transmutes</h3>
+<table width="80%" border="1", style="padding:2;margin-left:auto;margin-right:auto;text-align:center;">
+ <%= render "shared/head" %>
+ <tbody>
+ <% @recipe.each do |recipe| %>
+  <% if recipe.isRandom == false %>
+    <%= render :partial => "shared/recipe", :locals => { :recipe => recipe } %>
+    <%= render :partial => "shared/profit", :locals => { :recipe => recipe } %>
+  </tr>
+  <% end %>
+ <% end %>
+ </tbody>
+</table>
+   

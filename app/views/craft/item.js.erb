@@ -1,0 +1,3 @@
+<% ## Toggle the hidden row and render the Highchart in the div. %>
+$("#<%= params[:recipe] %>").toggle();
+$("#<%= params[:recipe]+'g' %>").html("<%= escape_javascript(render('chart')) %>")

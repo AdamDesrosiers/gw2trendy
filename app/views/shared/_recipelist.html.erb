@@ -1,0 +1,28 @@
+<% ## Shared partial for displaying a list of recipe objects. %>
+<% ## Paginate at the top and bottom of the table. %>
+<%= paginate @recipe %>
+<% ## TODO: Refactor inline styles to CSS class/ids. %>
+<table width="90%" border="1" style="padding:2;margin-left:auto;margin-right:auto;text-align:center;">
+ <% ## Render the table header partial %>
+ <%= render 'shared/head' %>
+ <tbody>
+ <% @recipe.each do |recipe| %>
+  <tr>
+  </tr>
+  <% ## Render both halves of the recipe display. This is a legacy arrangement
+     ##    from when Forge:random, Forge:static, and Craft all used seperate
+     ##    headers and profit display files.
+     ## TODO: Refactor these partials into a single file. %>
+  <%= render :partial => 'shared/recipe2', :locals => { :recipe => recipe } %>
+  <%= render :partial => 'shared/profit', :locals => { :recipe => recipe } %>
+  <% ## Hidden row and contained div for displaying the Highchart. %>
+  <tr id="<%= recipe.data_id %>" style="display:none;">
+   <td colspan="4">
+    <div id="<%= recipe.data_id.to_s+'g' %>">
+    </div>
+   </td>
+  </tr>
+ <% end %>
+ </tbody>
+</table>
+<%= paginate @recipe %>

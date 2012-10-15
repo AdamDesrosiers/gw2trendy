@@ -1,0 +1,9 @@
+<h1>Crafting Materials</h1>
+<% ## TODO: Add menu for selecting item category/subcategory for display %>
+
+<% ## AJAX Searchbox partial. %>
+<%= render :partial => 'shared/search', :locals => { :path => mats_path } %>
+
+<% ## AJAX Table partial. %>
+<div id="list"> <%= render 'itemlistcontainer' %> </div>
+

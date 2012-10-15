@@ -1,0 +1,8 @@
+<% for i in 0..20 do %>
+record<%= i %>:
+ name: Item <%= i %>
+ restriction_level: <%= (i * 13) % 80 %>
+ rarity: <%= f = (1 + rand(4)) %>
+ rarity_word: <%= %w(Basic Fine Masterwork Exotic Legendary)[f-1] %>
+ sp_cost: <%= rand(3) == 0 ? rand(10)/(rand(9)+1) : 0 %>
+<% end %>

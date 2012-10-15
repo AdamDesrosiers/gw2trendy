@@ -1,0 +1,12 @@
+<thead>
+ <tr>
+  <% ## sortable is a helper method for generating AJAX links for 
+     ##    table sorting. %>
+  <th><%= sortable 'Recipe Name', 'name' %></th>
+  <% ## TODO: Find out how to sort by methods instead of column names. %>
+  <th><%= sortable 'Components', '' %></th>
+  <% ## TODO: Write a method to sort by Result and by Profit. %>
+  <th><%= sortable 'Result', '' %></th>
+  <th><%= sortable 'Profit', '' %></th>
+ </tr>
+</thead>

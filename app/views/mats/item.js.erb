@@ -1,0 +1,3 @@
+// Toggle the hidden table row and render Highchart partial in the div inside.
+$("#<%= params[:item] %>").toggle();
+$("#<%= params[:item]+'g' %>").html("<%= escape_javascript(render('chart')) %>");

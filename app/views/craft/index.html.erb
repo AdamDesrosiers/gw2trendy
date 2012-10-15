@@ -1,0 +1,18 @@
+<h1>Crafting Recipes</h1>
+
+<% ##TODO: Replace this header with a dynamically created menu of crafting
+   ##      disciplines. %>
+<h3>Jewelcrafting</h3>
+
+<% ## Like was stated in forge/index.html.erb, I don't know why this isn't
+   ##    using shared/search.
+   ## TODO: Rework this to use shared/search. %>
+<%= form_tag craft_path, :method => 'get', :id => "search" do %>
+ <p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+ </p>
+ <% ## Render the shared recipe list partial. %>
+ <div id="list"> <%= render 'shared/recipelist' %> </div>
+<% end %>
+

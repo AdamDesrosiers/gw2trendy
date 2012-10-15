@@ -1,0 +1,21 @@
+<% ## Partial for rendering individual material data. %>
+  <% $mats.each do |mat| %>
+   <tr>
+    <% ## Material icon, link to display Highchart %>
+    <td><%= image_tag(mat.img) %>&nbsp;<%= link_to mat.name, :action => :item, :item => mat.data_id, :remote => true %>
+    </td>
+    <% ## Buy and Sell prices for the material. %>
+    <td style="text-align:right;"><%= raw coin mat.buyprice %></td>
+    <td style="text-align:right;"><%= raw coin mat.sellprice %></td>i
+    <% ## Supply and Demand for the material. %>
+    <td><%= mat.sale_availability %></td>
+    <td><%= mat.offer_availability %></td>
+   </tr>
+   <% ## Hidden row and div for rendering the Highchart. %>
+   <tr id="<%= mat.data_id %>" style="display:none;">
+    <td colspan="5">
+     <div id="<%= mat.data_id.to_s+'g' %>"> 
+     </div>
+    </td>
+   </tr>
+  <% end %>

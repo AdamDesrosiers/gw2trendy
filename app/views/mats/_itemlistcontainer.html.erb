@@ -1,0 +1,26 @@
+<% ## Contrary to the Forge and Crafting page, this page's pagination and 
+   ## Table headers are stored in a seperate partial, with the table data
+   ##    in a sub-partial.
+   ## Unsure if this is better or faster, but it should save some bandwidth. %>
+
+<% ## Pagination display at both the top and bottom of the table. %>
+<%= paginate @mats %>
+<p>What's the deal with these i's? </p>
+<table width="90%" border="1" class="itemtable">
+ <thead>
+  <tr>
+   <% ## sortable is a helper function for generating the AJAX links
+      ##    on the table column headers. %>
+   <th><%= sortable 'Item', 'name' %></th>
+   <th><%= sortable 'Buy Price', 'max_offer_unit_price' %></th>
+   <th><%= sortable 'Sell Price', 'min_sale_unit_price' %></th>
+   <th><%= sortable 'Supply', 'sale_availability' %></th>
+   <th><%= sortable 'Demand', 'offer_availability' %></th>
+  </tr>
+ </thead>
+ <tbody>
+ <% ## Render the item data partial %>
+ <%= render 'itemlist' %>
+ </tbody>
+</table>
+<%= paginate @mats %>

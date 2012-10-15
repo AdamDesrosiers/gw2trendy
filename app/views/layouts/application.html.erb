@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gw2trends</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application", :highcharts %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<table>
+ <tr>
+  <% ## TODO: Replace with dynamically generated menus. %>
+  <td>Home</td>
+  <td><%= link_to 'Mats', mats_path %></td>
+  <td><%= link_to 'Forge', forge_path %></td>
+  <td><%= link_to 'Crafting', craft_path %></td>
+ </tr>
+</table>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<% ## Second half of the recipe display. %>
+<td>
+ <% if params[:filter] == "random" %>
+  <% ## Random Transmutes get a special treatment: A list of (before tax) net 
+     ##    profits for possible outcomes. For recipes with a greater spread
+     ##    of results than 10, an interval-5 summary is printed. %>
+  <table>
+  <% for i in recipe.bulk[:min_qty]..recipe.bulk[:max_qty] do %>
+   <% next if (recipe.bulk[:max_qty] - recipe.bulk[:min_qty] > 10) && !(i % 5 == 0) %>
+   <tr>
+    <% ## Number of products in result, followed by net profits (before tax) %>
+    <td><%= i %>x:<td>
+    <td style="text-align:right;"><%= raw coin ((i * recipe.bulk[:sell_value]) - recipe.bulk[:cost]) %></td>
+   </tr>
+  <% end %>
+ </table>
+ <% else %>
+ <% ## For normal recipes, the number of items produced, followed by net profit
+    ##    (before tax) %>
+ <%= recipe.bulk[:count] %> Items <br />
+ <%= raw coin recipe.bulk[:sell_value] %>
+ <% end %>
+</td>
+<% ## Net profit of the recipe, after 5% listing fee and 10% sales tax are
+   ##    subtracted. Then, if the recipe has a Skill Points component, display
+   ##    profit per Skill Point. %>
+<td>
+ Net: <%= raw coin (profit = ((recipe.bulk[:count] * recipe.bulk[:sell_value] * 0.85) - recipe.bulk[:cost]).floor) %> <br />
+
+ <% if !recipe.bulk[:sp].nil? && recipe.bulk[:sp] > 0 %>
+ /SP: <%= raw coin (((profit/recipe.bulk[:sp]).floor).to_i) %>
+ <% end %>
+</td>

@@ -1,0 +1,17 @@
+<h2> Mystic Forge </h2>
+<% ## Display the Menu partial.
+   ## TODO: Create menus Dynamically %>
+<%= render :partial => 'menu' %>
+
+<% ## There was a reason I didn't use the shared Search partial here.
+   ## Unfortunately I didn't write it down at the time, so I can't remember.
+   ## TODO: Try and replace this with shared Search partial. %>
+<%= form_tag forge_path, :method => 'get', :id => 'search' do %>
+ <p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+ </p>
+ <% ## Shared partial for displaying a list of recipes. %>
+ <div id="list"> <%= render 'shared/recipelist' %> </div>
+<% end %>
+
