@@ -7,6 +7,8 @@ Gw2trendy::Application.routes.draw do
   match 'craftitem' => 'craft#item'
   match 'matsitem' => 'mats#item'
   match 'forge' => 'forge#index'
+  
+  root :to => 'forge#index'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
