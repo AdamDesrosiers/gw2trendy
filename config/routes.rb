@@ -7,7 +7,9 @@ Gw2trendy::Application.routes.draw do
   match 'craftitem' => 'craft#item'
   match 'matsitem' => 'mats#item'
   match 'forge' => 'forge#index'
-  
+  match 'forge/list' => 'forge#index'
+  match 'mats/list' => 'mats#index'
+  match 'craft/list' => 'craft#index'
   root :to => 'forge#index'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

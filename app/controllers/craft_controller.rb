@@ -21,6 +21,7 @@ class CraftController < ApplicationController
 	  ## Listing::Recipe_Listing.new ;; Store current profitability info.
 	  listing = Listing::Recipe_Listing.new
 	  listing.recipe_id = recipe.data_id
+	  recipe.update_cost
 	  listing.cost = recipe.get_cost
 	  listing.sell_value = recipe.resultItem.sellprice
 	  listing.profit = (recipe.resultItem.sellprice*0.85 - recipe.get_cost).floor

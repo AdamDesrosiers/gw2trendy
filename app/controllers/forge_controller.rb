@@ -28,6 +28,7 @@ class ForgeController < ApplicationController
            (params[:filter] == "static" && ut.static_listings < 5.minutes.ago) 
           listing = Listing::Recipe_Listing.new
           listing.recipe_id = recipe.data_id
+	  recipe.update_cost
 	  listing.cost = recipe.get_cost
   	  listing.sell_value = recipe.resultItem.sellprice*recipe.count
 	  listing.profit = (recipe.resultItem.sellprice*recipe.count*0.85 - recipe.get_cost).floor
